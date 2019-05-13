@@ -4,6 +4,8 @@ class ListNode:
   def __init__(self, value, prev=None, next=None):
     self.value = value
     self.prev = prev
+
+    #next node on the list
     self.next = next
 
   """Wrap the given value in a ListNode and insert it
