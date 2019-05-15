@@ -119,14 +119,45 @@ class DoublyLinkedList:
 
 
   def move_to_end(self, node):
-    pass
+    if node is self.tail:
+      return
+    value = node.value
+    if node is self.tail:
+      self.remove_from_head()
+      self.add_to_tail(value)
+    else:
+        node.delete()
+        self.length -= 1
+        self.add_to_tail(value)
 
 
 
   def delete(self, node):
-    pass
+    self.length -= 1
+    if not self.head and not self.tail:
+      return
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+    elif self.head == node:
+      self.head = node.next
+      node.delete()
+    elif self.tail == node:
+      self.tail = node.prev
+      node.delete()
+    else:
+      node.delete()
+    
     
 
 
   def get_max(self):
-    pass
+    if not self.head:
+      return None
+    max_val = self.head.value
+    current = self.head
+    while current:
+      if current.value > max_val:
+        max_val = current.value
+      current= current.next
+      return max_val
